@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="LibreriaVaxi/LibreriaVaxi.csproj" />
+  <Project Path="LibreriaVaxiMSTest/LibreriaVaxiMSTest.csproj" />
+</Solution>
