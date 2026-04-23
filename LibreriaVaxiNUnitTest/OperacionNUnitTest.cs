@@ -19,25 +19,24 @@
         }
 
         [Test]
-        public void EsValor_InputImpar_ReturnFalse()
+        [TestCase(3, ExpectedResult = false)]
+        [TestCase(5, ExpectedResult = false)]
+        [TestCase(7, ExpectedResult = false)]
+        public bool EsValor_InputImpar_ReturnFalse(int numero)
         {
-            // Arrange
             var op = new Operacion();
-            int numero = 5;
 
-            // Act
-            bool esPar = op.EsValorPar(numero);
-
-            // Assert
-            Assert.That(esPar, Is.False);
+            return op.EsValorPar(numero);
         }
 
         [Test]
-        public void EsValor_InputPar_ReturnTrue()
+        [TestCase(4)]
+        [TestCase(6)]
+        [TestCase(8)]
+        public void EsValor_InputPar_ReturnTrue(int numero)
         {
             // Arrange
             var op = new Operacion();
-            int numero = 4;
 
             // Act
             bool esPar = op.EsValorPar(numero);
