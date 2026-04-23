@@ -19,5 +19,33 @@ namespace LibreriaVaxiMSTest
             // Assert
             Assert.AreEqual(119, resultado);
         }
+
+        [TestMethod]
+        public void EsValor_InputImpar_ReturnFalse()
+        {
+            // Arrange
+            var op = new Operacion();
+            int numero = 5;
+
+            // Act
+            bool esPar = op.EsValorPar(numero);
+
+            // Assert
+            Assert.IsFalse(esPar);
+        }
+
+        [TestMethod]
+        public void EsValor_InputPar_ReturnTrue()
+        {
+            // Arrange
+            var op = new Operacion();
+            int numero = 4;
+
+            // Act
+            bool esPar = op.EsValorPar(numero);
+
+            // Assert
+            Assert.IsTrue(esPar);
+        }
     }
 }

@@ -6,5 +6,10 @@
         {
             return numero1 + numero2;
         }
+
+        public bool EsValorPar(int numero)
+        {
+            return numero % 2 == 0;
+        }
     }
 }
