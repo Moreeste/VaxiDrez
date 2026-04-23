@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="LibreriaVaxi/LibreriaVaxi.csproj" />
   <Project Path="LibreriaVaxiMSTest/LibreriaVaxiMSTest.csproj" />
+  <Project Path="LibreriaVaxiNUnitTest/LibreriaVaxiNUnitTest.csproj" Id="6ba60518-0dbc-44c1-8dbf-5f4a54ca7788" />
 </Solution>
