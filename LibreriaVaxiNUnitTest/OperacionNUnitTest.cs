@@ -44,5 +44,20 @@
             // Assert
             Assert.That(esPar, Is.True);
         }
+
+        [Test]
+        [TestCase(2.2, 1.2)] // 3.4
+        [TestCase(2.23, 1.24)] // 3.47
+        public void SumarDecimales_InputDosNumeros_GetValorCorrecto(double numero1, double numero2)
+        {
+            // Arrange
+            var op = new Operacion();
+
+            // Act
+            double resultado = op.SumarDecimales(numero1, numero2);
+
+            // Assert
+            Assert.That(resultado, Is.EqualTo(3.4).Within(0.1));
+        }
     }
 }
