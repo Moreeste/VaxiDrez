@@ -59,5 +59,19 @@
             // Assert
             Assert.That(resultado, Is.EqualTo(3.4).Within(0.1));
         }
+
+        [Test]
+        public void GetListaNumerosImpares_InputMinimoMaximoIntervalo_ReturnsListaImpares()
+        {
+            //Arrange
+            var op = new Operacion();
+            var numerosImparesEsperados = new List<int> { 5, 7, 9 };
+
+            // Act
+            var resultado = op.GetListaNumerosImpares(5, 10);
+
+            // Assert
+            Assert.That(resultado, Is.EquivalentTo(numerosImparesEsperados));
+        }
     }
 }
