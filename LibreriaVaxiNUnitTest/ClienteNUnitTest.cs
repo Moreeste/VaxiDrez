@@ -3,14 +3,22 @@
     [TestFixture]
     public class ClienteNUnitTest
     {
+        private Cliente _cliente;
+
+        [SetUp]
+        public void Setup()
+        {
+            _cliente = new Cliente();
+        }
+
         [Test]
         public void CrearNombreCompleto_InputNombreApellido_ReturnNombreCompleto()
         {
             //Arrange
-            Cliente cliente = new Cliente();
+
 
             //Act
-            string nombreCompleto = cliente.CrearNombreCompleto("Esteban", "Rojas");
+            string nombreCompleto = _cliente.CrearNombreCompleto("Esteban", "Rojas");
 
             //Assert
             Assert.That(nombreCompleto, Is.EqualTo("Esteban Rojas"));
@@ -23,9 +31,7 @@
         [Test]
         public void ClientNombre_NoValues_ReturnNull()
         {
-            var cliente = new Cliente();
-
-            Assert.That(cliente.ClientNombre, Is.Null);
+            Assert.That(_cliente.ClientNombre, Is.Null);
         }
     }
 }
