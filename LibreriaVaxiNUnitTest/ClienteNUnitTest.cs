@@ -19,5 +19,13 @@
             Assert.That(nombreCompleto, Does.StartWith("Esteban"));
             Assert.That(nombreCompleto, Does.EndWith("Rojas"));
         }
+
+        [Test]
+        public void ClientNombre_NoValues_ReturnNull()
+        {
+            var cliente = new Cliente();
+
+            Assert.That(cliente.ClientNombre, Is.Null);
+        }
     }
 }
