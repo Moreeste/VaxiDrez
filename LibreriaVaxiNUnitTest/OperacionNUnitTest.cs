@@ -72,6 +72,12 @@
 
             // Assert
             Assert.That(resultado, Is.EquivalentTo(numerosImparesEsperados));
+            Assert.That(resultado, Does.Contain(5));
+            Assert.That(resultado, Is.Not.Empty);
+            Assert.That(resultado.Count, Is.EqualTo(3));
+            Assert.That(resultado, Has.No.Member(4));
+            Assert.That(resultado, Is.Ordered.Ascending);
+            Assert.That(resultado, Is.Unique);
         }
     }
 }
