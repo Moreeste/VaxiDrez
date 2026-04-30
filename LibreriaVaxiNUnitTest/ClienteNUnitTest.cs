@@ -33,5 +33,11 @@
         {
             Assert.That(_cliente.ClientNombre, Is.Null);
         }
+
+        [Test]
+        public void DescuentoEvaluacion_DefaultClient_ReturnsDescuentoIntervalo()
+        {
+            Assert.That(_cliente.Descuento, Is.InRange(0, 100));
+        }
     }
 }
