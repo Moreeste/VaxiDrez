@@ -42,5 +42,24 @@
         {
             Assert.That(_cliente.Descuento, Is.InRange(0, 100));
         }
+
+        [Test]
+        public void CrearNombreCompleto_InputNombre_ReturnsNotNull()
+        {
+            _cliente.CrearNombreCompleto("Esteban", "");
+            Assert.That(_cliente.ClientNombre, Is.Not.Null);
+            Assert.That(string.IsNullOrEmpty(_cliente.ClientNombre), Is.False);
+        }
+
+        [Test]
+        public void ClientNombre_NombreEnBlanco_ThrowsException()
+        {
+            var exceptionDetalle = Assert.Throws<ArgumentException>(() => _cliente.CrearNombreCompleto("", "Rojas"));
+
+            Assert.That(exceptionDetalle.Message, Is.EqualTo("El nombre esta en blanco"));
+            Assert.That(() => _cliente.CrearNombreCompleto("", "Rojas"), Throws.ArgumentException.With.Message.EqualTo("El nombre esta en blanco"));
+            Assert.Throws<ArgumentException>(() => _cliente.CrearNombreCompleto("", "Rojas"));
+            Assert.That(() => _cliente.CrearNombreCompleto("", "Rojas"), Throws.ArgumentException);
+        }
     }
 }
