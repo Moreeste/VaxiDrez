@@ -21,11 +21,14 @@
             string nombreCompleto = _cliente.CrearNombreCompleto("Esteban", "Rojas");
 
             //Assert
-            Assert.That(nombreCompleto, Is.EqualTo("Esteban Rojas"));
-            Assert.That(nombreCompleto, Does.Contain("Rojas"));
-            Assert.That(nombreCompleto, Does.Contain("rojas").IgnoreCase);
-            Assert.That(nombreCompleto, Does.StartWith("Esteban"));
-            Assert.That(nombreCompleto, Does.EndWith("Rojas"));
+            Assert.Multiple(() =>
+            {
+                Assert.That(nombreCompleto, Is.EqualTo("Esteban Rojas"));
+                Assert.That(nombreCompleto, Does.Contain("Rojas"));
+                Assert.That(nombreCompleto, Does.Contain("rojas").IgnoreCase);
+                Assert.That(nombreCompleto, Does.StartWith("Esteban"));
+                Assert.That(nombreCompleto, Does.EndWith("Rojas"));
+            });
         }
 
         [Test]
