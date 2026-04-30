@@ -61,5 +61,21 @@
             Assert.Throws<ArgumentException>(() => _cliente.CrearNombreCompleto("", "Rojas"));
             Assert.That(() => _cliente.CrearNombreCompleto("", "Rojas"), Throws.ArgumentException);
         }
+
+        [Test]
+        public void GetClienteDetalle_CrearClienteConMenos500TotalOrder_ReturnsClienteBasico()
+        {
+            _cliente.OrderTotal = 100;
+            var resultado = _cliente.GetClienteDetalle();
+            Assert.That(resultado, Is.TypeOf<ClienteBasico>());
+        }
+
+        [Test]
+        public void GetClienteDetalle_CrearClienteConMas500TotalOrder_ReturnsClientePremium()
+        {
+            _cliente.OrderTotal = 700;
+            var resultado = _cliente.GetClienteDetalle();
+            Assert.That(resultado, Is.TypeOf<ClientePremium>());
+        }
     }
 }

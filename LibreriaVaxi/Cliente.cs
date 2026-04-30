@@ -4,6 +4,7 @@
     {
         public string ClientNombre { get; set; }
         public int Descuento = 10;
+        public int OrderTotal { get; set; }
 
         public string CrearNombreCompleto(string nombre, string apellido)
         {
@@ -16,5 +17,32 @@
             ClientNombre = $"{nombre} {apellido}";
             return ClientNombre;
         }
+
+        public TipoCliente GetClienteDetalle()
+        {
+            if (OrderTotal < 500)
+            {
+                return new ClienteBasico();
+            }
+            else
+            {
+                return new ClientePremium();
+            }
+        }
+    }
+
+    public class TipoCliente
+    {
+
+    }
+
+    public class ClienteBasico : TipoCliente
+    {
+
+    }
+
+    public class ClientePremium : TipoCliente
+    {
+
     }
 }
