@@ -12,4 +12,12 @@
             Console.WriteLine(message);
         }
     }
+
+    public class LoggerFake : ILoggerGeneral
+    {
+        public void Message(string message)
+        {
+
+        }
+    }
 }
