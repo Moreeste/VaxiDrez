@@ -22,11 +22,12 @@
         {
             if (Balance >= monto)
             {
+                _loggerGeneral.LogDatabase($"Monto de retiro: {monto}");
                 Balance -= monto;
-                return true;
+                return _loggerGeneral.LogBalanceDespuesRetiro(Balance);
             }
 
-            return false;
+            return _loggerGeneral.LogBalanceDespuesRetiro(Balance-monto);
         }
 
         public int GetBalance()
