@@ -1,23 +1,39 @@
-﻿namespace LibreriaVaxi
+﻿using Moq;
+
+namespace LibreriaVaxi
 {
     [TestFixture]
     public class CuentaBancariaNUnitTest
     {
-        private CuentaBancaria _cuentaBancaria;
+        private CuentaBancaria _cuenta;
 
         [SetUp]
         public void Setup()
         {
-            _cuentaBancaria = new CuentaBancaria(new LoggerFake());
+
         }
 
         [Test]
-        public void Deposito_Input100_ReturnsTrue()
+        public void Deposito_Input100LoggerFake_ReturnsTrue()
         {
-            var result = _cuentaBancaria.Deposito(100);
+            var cuentaBancaria = new CuentaBancaria(new LoggerFake());
+
+            var result = cuentaBancaria.Deposito(100);
 
             Assert.That(result, Is.True);
-            Assert.That(_cuentaBancaria.GetBalance(), Is.EqualTo(100));
+            Assert.That(cuentaBancaria.GetBalance(), Is.EqualTo(100));
+        }
+
+        [Test]
+        public void Deposito_Input100Mocking_ReturnsTrue()
+        {
+             var mocking = new Mock<ILoggerGeneral>();
+            var cuentaBancaria = new CuentaBancaria(mocking.Object);
+
+            var result = cuentaBancaria.Deposito(100);
+
+            Assert.That(result, Is.True);
+            Assert.That(cuentaBancaria.GetBalance(), Is.EqualTo(100));
         }
     }
 }
