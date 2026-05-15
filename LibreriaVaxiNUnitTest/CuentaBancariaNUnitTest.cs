@@ -27,7 +27,7 @@ namespace LibreriaVaxi
         [Test]
         public void Deposito_Input100Mocking_ReturnsTrue()
         {
-             var mocking = new Mock<ILoggerGeneral>();
+            var mocking = new Mock<ILoggerGeneral>();
             var cuentaBancaria = new CuentaBancaria(mocking.Object);
 
             var result = cuentaBancaria.Deposito(100);
@@ -80,6 +80,20 @@ namespace LibreriaVaxi
             var resultado = loggerGeneralMock.Object.MessageConReturnString("HOLA MUNDO");
 
             Assert.That(resultado, Is.EqualTo(textoPrueba.ToLower()));
+        }
+
+        [Test]
+        public void CuentaBancariaLoggerGeneral_LogMockingOutput_ReturnsTrue()
+        {
+            var loggerGeneralMock = new Mock<ILoggerGeneral>();
+            string textoPrueba = "hola";
+
+            loggerGeneralMock.Setup(x => x.MessageConOutParametroReturnBoolean(It.IsAny<string>(), out textoPrueba)).Returns(true);
+
+            string parametroOut = "";
+            var resultado = loggerGeneralMock.Object.MessageConOutParametroReturnBoolean("Vaxi", out parametroOut);
+
+            Assert.That(resultado, Is.True);
         }
     }
 }
