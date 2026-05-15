@@ -68,5 +68,18 @@ namespace LibreriaVaxi
 
             Assert.That(result, Is.False);
         }
+
+        [Test]
+        public void CuentaBancariaLoggerGeneral_LogMocking_ReturnsTrue()
+        {
+            var loggerGeneralMock = new Mock<ILoggerGeneral>();
+            string textoPrueba = "hola mundo";
+
+            loggerGeneralMock.Setup(x => x.MessageConReturnString(It.IsAny<string>())).Returns<string>(str => str.ToLower());
+
+            var resultado = loggerGeneralMock.Object.MessageConReturnString("HOLA MUNDO");
+
+            Assert.That(resultado, Is.EqualTo(textoPrueba.ToLower()));
+        }
     }
 }

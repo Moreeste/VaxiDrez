@@ -5,6 +5,7 @@
         void Message(string message);
         bool LogDatabase(string message);
         bool LogBalanceDespuesRetiro(int balanceDespuesRetiro);
+        string MessageConReturnString(string message);
     }
 
     public class LoggerGeneral : ILoggerGeneral
@@ -31,6 +32,12 @@
         {
             Console.WriteLine(message);
         }
+
+        public string MessageConReturnString(string message)
+        {
+            Console.WriteLine(message);
+            return message.ToLower();
+        }
     }
 
     public class LoggerFake : ILoggerGeneral
@@ -48,6 +55,11 @@
         public void Message(string message)
         {
 
+        }
+
+        public string MessageConReturnString(string message)
+        {
+            throw new NotImplementedException();
         }
     }
 }
