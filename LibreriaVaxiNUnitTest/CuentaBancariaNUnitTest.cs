@@ -121,6 +121,14 @@ namespace LibreriaVaxi
 
             Assert.That(loggerGeneralMock.Object.TipoLogger, Is.EqualTo("warning"));
             Assert.That(loggerGeneralMock.Object.PrioridadLogger, Is.EqualTo(1));
+
+            //callbacks
+            string textoTemporal = "vaxi";
+            loggerGeneralMock.Setup(x => x.LogDatabase(It.IsAny<string>()))
+                .Returns(true).Callback<string>(parametro => textoTemporal += parametro);
+            loggerGeneralMock.Object.LogDatabase("drez");
+
+            Assert.That(textoTemporal, Is.EqualTo("vaxidrez"));
         }
     }
 }
