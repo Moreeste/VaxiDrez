@@ -130,5 +130,21 @@ namespace LibreriaVaxi
 
             Assert.That(textoTemporal, Is.EqualTo("vaxidrez"));
         }
+
+        [Test]
+        public void CuentaBancariaLogger_VerifyEjemplo()
+        {
+            var loggerGeneralMock = new Mock<ILoggerGeneral>();
+            var cuentaBancaria = new CuentaBancaria(loggerGeneralMock.Object);
+            cuentaBancaria.Deposito(100);
+
+            Assert.That(cuentaBancaria.GetBalance(), Is.EqualTo(100));
+
+            //Verifica cuenta veces el mock está llamando al método message
+            loggerGeneralMock.Verify(x => x.Message(It.IsAny<string>()), Times.Exactly(3));
+            loggerGeneralMock.Verify(x => x.Message("Es otro texto"), Times.AtLeastOnce);
+            loggerGeneralMock.VerifySet(x => x.PrioridadLogger = 1, Times.Once);
+            loggerGeneralMock.VerifyGet(x => x.PrioridadLogger, Times.Once);
+        }
     }
 }

@@ -14,6 +14,10 @@
         public bool Deposito(int monto)
         {
             _loggerGeneral.Message($"Depositando la cantidad de: {monto}");
+            _loggerGeneral.Message($"Es otro texto");
+            _loggerGeneral.Message($"Tercer texto");
+            _loggerGeneral.PrioridadLogger = 1;
+            var prioridad = _loggerGeneral.PrioridadLogger;
             Balance += monto;
             return true;
         }
