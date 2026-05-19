@@ -7,6 +7,7 @@
         bool LogBalanceDespuesRetiro(int balanceDespuesRetiro);
         string MessageConReturnString(string message);
         bool MessageConOutParametroReturnBoolean(string str, out string outputStr);
+        bool MessageConObjetoReferenciaParametroReturnBoolean(ref Cliente cliente);
     }
 
     public class LoggerGeneral : ILoggerGeneral
@@ -32,6 +33,11 @@
         public void Message(string message)
         {
             Console.WriteLine(message);
+        }
+
+        public bool MessageConObjetoReferenciaParametroReturnBoolean(ref Cliente cliente)
+        {
+            return true;
         }
 
         public bool MessageConOutParametroReturnBoolean(string str, out string outputStr)
@@ -62,6 +68,11 @@
         public void Message(string message)
         {
 
+        }
+
+        public bool MessageConObjetoReferenciaParametroReturnBoolean(ref Cliente cliente)
+        {
+            throw new NotImplementedException();
         }
 
         public bool MessageConOutParametroReturnBoolean(string str, out string outputStr)
