@@ -108,5 +108,19 @@ namespace LibreriaVaxi
             Assert.That(loggerGeneralMock.Object.MessageConObjetoReferenciaParametroReturnBoolean(ref cliente), Is.True);
             Assert.That(loggerGeneralMock.Object.MessageConObjetoReferenciaParametroReturnBoolean(ref clienteNoUsado), Is.False);
         }
+
+        [Test]
+        public void CuentaBancariaLoggerGeneral_LogMockingPropiedadPrioridadTipo_ReturnsTrue()
+        {
+            var loggerGeneralMock = new Mock<ILoggerGeneral>();
+            loggerGeneralMock.SetupAllProperties();
+
+            loggerGeneralMock.SetupProperty(x => x.TipoLogger, "warning");
+            loggerGeneralMock.SetupProperty(x => x.PrioridadLogger, 1);
+            
+
+            Assert.That(loggerGeneralMock.Object.TipoLogger, Is.EqualTo("warning"));
+            Assert.That(loggerGeneralMock.Object.PrioridadLogger, Is.EqualTo(1));
+        }
     }
 }
