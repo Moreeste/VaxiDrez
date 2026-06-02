@@ -1,6 +1,15 @@
 @Education.Api_HostAddress = http://localhost:5185
 
-GET {{Education.Api_HostAddress}}/weatherforecast/
+GET {{Education.Api_HostAddress}}/api/curso
 Accept: application/json
 
 ###
+
+POST {{Education.Api_HostAddress}}/api/curso
+content-type: application/json
+{
+  "titulo": "Curso de C++",
+  "descripcion": "Aprenda C++ de básico a avanzado",
+  "fechapublicacion": "2026-06-02",
+  "precio": 149.99
+}
