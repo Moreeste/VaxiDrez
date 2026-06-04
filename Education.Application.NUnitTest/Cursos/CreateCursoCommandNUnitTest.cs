@@ -1,7 +1,4 @@
-﻿using AutoFixture;
-using AutoMapper;
-using Education.Domain;
-using Education.Persistence;
+﻿using Education.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
