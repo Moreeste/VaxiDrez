@@ -20,7 +20,7 @@ namespace Education.Application.Cursos
         [Test]
         public async Task CreateCursoCommandHandler_InputCurso_ReturnsNumber()
         {
-            var command = new CreateCursoCommandRequest
+            var request = new CreateCursoCommandRequest
             {
                 Titulo = "Curso de Prueba",
                 Descripcion = "Descripción del curso de prueba",
@@ -28,7 +28,7 @@ namespace Education.Application.Cursos
                 Precio = 99.99m
             };
 
-            var resultado = await _handler.Handle(command, CancellationToken.None);
+            var resultado = await _handler.Handle(request, CancellationToken.None);
 
             Assert.That(resultado, Is.EqualTo(Unit.Value));
         }
