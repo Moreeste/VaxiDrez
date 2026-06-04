@@ -22,6 +22,7 @@ namespace Education.Application.Cursos
             var options = new DbContextOptionsBuilder<EducationDbContext>().UseInMemoryDatabase(databaseName: $"EducationDb-{Guid.NewGuid()}").Options;
             var educationDbContextFake = new EducationDbContext(options);
             educationDbContextFake.Cursos.AddRange(cursoRecords);
+            educationDbContextFake.SaveChanges();
 
             var mapConfig = new MapperConfiguration(cfg =>
             {
@@ -33,9 +34,11 @@ namespace Education.Application.Cursos
         }
 
         [Test]
-        public void GetCursoQueryHandler_ConsultaCursos_ReturnsTrue()
+        public async Task GetCursoQueryHandler_ConsultaCursos_ReturnsTrue()
         {
+            var resultado = await _handler.Handle(new GetCursoQueryRequest(), CancellationToken.None);
 
+            Assert.That(resultado, Is.Not.Null);
         }
     }
 }
